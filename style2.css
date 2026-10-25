@@ -1,0 +1,191 @@
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Starts 20px higher up */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Ends in its normal position */
+    }
+
+} body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything horizontally */
+    background-color: #1a1a2e; /* Assuming your dark blue background */
+    color: white;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
+}
+
+h1{
+    font-size: 60px;
+    color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-rendering: geometricPrecision;
+    text-align: center;
+}
+
+.todo app {
+    display: flex;
+    justify-content: center; /* Centers the buttons */
+    align-items: center; /* Aligns them vertically */
+    gap: 15px; /* Adds perfect space between them */
+    margin-top: 20px; /* Space between input and buttons */
+    margin-bottom: 30px; /* Space between buttons and the list */
+}
+
+/* Container to align the input and button side-by-side */
+.input-section {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* The Text Input Box */
+#todoInput {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-right: none; /* Removes the right border so it touches the button */
+    border-radius: 8px 0 0 8px; /* Rounds only the left corners */
+    outline: none;
+    width: 250px;
+    transition: border-color 0.3s;
+}
+
+/* Change border color when you click inside the box */
+#todoInput:focus {
+    border-color: #4CAF50; 
+}
+
+/* The Add Button */
+#addBtn {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50; /* Green */
+    border: 1px solid #4CAF50;
+    border-radius: 0 8px 8px 0; /* Rounds only the right corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Darker green when you hover over it */
+#addBtn:hover {
+    background-color: #45a049;
+}
+
+
+/* Style for all filter buttons */
+.filter-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: transparent;
+    color: #ccc; /* Light gray text for inactive state */
+    border: 1px solid #555;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    margin: 0 3px; /* Space between buttons */
+    transition: all 0.3s ease;
+    justify-content: center;
+}
+
+/* Hover effect for inactive buttons */
+.filter-btn:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Style for the button that is currently selected */
+.filter-btn.active {
+    background-color: white;
+    color: #1a1a2e; /* Dark text to contrast with the white background */
+    border-color: white;
+    font-weight: bold;
+}
+
+/* Target the UL that holds your todos */
+#todoList {
+    list-style-type: none; /* Removes the bullet points */
+    padding: 0;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 400px; /* Keeps the list from getting too wide */
+}   
+
+/* Target each individual item */
+#todoList li {
+    display: flex; /* Puts the checkbox, text, and button in a row */
+    align-items: center; /* Centers them vertically */
+    justify-content: space-between; /* Pushes the delete button to the right */
+    background-color: #ffffff; /* White background for the item */
+    color: #333; /* Dark text so you can read it */
+    padding: 10px 15px;
+    margin-bottom: 10px; /* Space between items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Slight shadow to make it pop */
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Space out the checkbox from the text */
+#todoList li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* Make the checkbox grow slightly when you click it */
+#todoList li input[type="checkbox"]:active {
+    transform: scale(1.3);
+}
+
+/* When the item is completed, fade the text smoothly */
+#todoList li.completed span {
+    text-decoration: line-through;
+    color: #888;
+    opacity: 0.6;
+}
+
+/* Style the task text */
+#todoList li span {
+    flex-grow: 1; /* Makes the text take up the middle space */
+    font-size: 16px;
+    font-family: sans-serif;
+    word-break: break-word; /* Prevents long words from breaking the layout */
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Target the delete button */
+.delete-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s; /* Smooth hover effect */
+}
+
+/* Make it grow slightly when you hover over it */
+.delete-btn:hover {
+    transform: scale(1.3);
+}
+
+/* Style for completed tasks */
+#todoList li.completed {
+    background-color: #e0e0e0; /* Slightly gray background */
+    opacity: 0.7; /* Make it look faded */
+}
+
+/* Add a strikethrough to the text of completed tasks */
+#todoList li.completed span {
+    text-decoration: line-through;
+    color: #777;
+}
